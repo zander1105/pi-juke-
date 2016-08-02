@@ -16,8 +16,10 @@ if len(TUNES) == 0:
 else:
 	print (str(len(TUNES)) + " songs found in your JukeBox")
 
+print ( "playing first song")
 player = vlc.MediaPlayer(TUNES[0])
 player.play()
+print("gear")
 
 while True:
    pass
