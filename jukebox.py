@@ -15,7 +15,8 @@ if len(TUNES) == 0:
 	sys.exit(1)
 else:
 	print (str(len(TUNES)) + " songs found in your JukeBox")
-
+for tune in TUNES :
+        print( tune );
 print ( "playing first song")
 player = vlc.MediaPlayer(TUNES[0])
 player.play()
