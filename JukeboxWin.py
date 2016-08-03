@@ -8,7 +8,7 @@ import sys
 import vlc
 
 MUSIC_FOLDER ="songs\\"
-TUNES = glob.glob(MUSIC_FOLDER+"*.mp3") +  glob.glob(MUSIC_FOLDER+"*.m4a")
+TUNES = glob.glob(MUSIC_FOLDER+"*.mp4") +  glob.glob(MUSIC_FOLDER+"*.mp3") +  glob.glob(MUSIC_FOLDER+"*.m4a")
 if len(TUNES) == 0:
 	print("No Tunes in your JukeBox!")
 	print("Exiting....")
