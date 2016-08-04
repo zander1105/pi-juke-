@@ -4,13 +4,13 @@ import glob
 import random
 import sys
 import vlc
-
-def waitTillPlayerFinished( Player ):
+debug = False
+def waitTillPlayerFinished( player ):
 	state = player.get_state()
 	print( state )
-		if debug == True:
+	if debug == True:
 			print( state )
-		while (state == vlc.State.NothngSpecial or
+	while (state == vlc.State.NothingSpecial or
 			state == vlc.State.Opening or
 			state == vlc.State.Playing ):
 		time.sleep( 1 )
@@ -18,7 +18,7 @@ def waitTillPlayerFinished( Player ):
 
 def getFileToPlay( file ):
 	fo = open( file, 'r' )
-	result = readline();
+	result = fo.readline();
 	result = result.rstrip('\r\n'); 
 	fo.close()
 	os.remove( file )
@@ -29,11 +29,11 @@ def playASong( tune ):
 		player = vlc.MediaPlayer( tune )
 		player.play()
 		player.set_fullscreen( True )
-		waitTillPlayerFinished( Player )
+		waitTillPlayerFinished( player )
 		player.release()
 
-QUEUE FOLDER = "queue/"
-while true:
+QUEUE_FOLDER = "queue/"
+while True:
 	QUEUED = glob.glob( QUEUE_FOLDER + "*.txt" )
 	if len( QUEUED) > 0:
 		QUEUED = sorted( QUEUED )
