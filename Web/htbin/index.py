@@ -11,7 +11,6 @@ import sys
 print('Content-type: text/html')
 print('''
 ''')
-#print "<link type=\"text/css\" rel=\"stylesheet\" href=\"style.css\">"
 
 def noExtension( filename ):
     return os.path.splitext( filename )[0]
@@ -39,15 +38,11 @@ if len(TUNES) == 0:
     sys.exit(1)
 else:
     print (str(len(TUNES)) + " songs found in your JukeBox")
-    print ("<link type=\"text/css\" rel=\"stylesheet\" href=\"style.css\">")
+    print ("<link type=\"text/css\" rel=\"stylesheet\" href=\"/style.css\">")
+    print ("<h1> Pi Juke!</h1>")
 for tune in TUNES :
     name = noPath( tune )
     noExt = noExtension( name )
-    print( "<a href=\"/htbin/index.py/?song=songs/" + name +"\">" + noExt +"</a")
-    print( "<h1><font color=\"06dbo6\">" + name + "</font></h1>" )
-    print(" <video width=\"240\" height=\"200\" controls>" )
-    print("<source src=\"" + tune + "\" type=\"video/mp4\">" )
-    print("<source src=\"" + tune + "\" type=\"video/ogg\">" )
-    print("Your browser does not support the video tag.")
-    print("</video>")
+    print( "<h2><a href=\"/htbin/index.py/?song=songs/" + name +"\">" + noExt +"</a>")
+
 
