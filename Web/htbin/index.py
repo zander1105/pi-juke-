@@ -9,7 +9,15 @@ import random
 import sys
 
 print('Content-type: text/html')
-print('''
+print('''<html>
+<head>
+<style>
+body {
+    background-image: url("beach.jpg");
+}
+</style>
+</head>
+</html>
 ''')
 def noExtension( filename ):
     return os.path.splitext( filename )[0]
@@ -29,7 +37,7 @@ arguments = cgi.FieldStorage()
 
 if "song" in arguments:
     postQueueToJukebox( arguments['song'])
-MUSIC_FOLDER = "C:\\Users\\gtafi\\Desktop\\pi-juke-\\songs\\"
+MUSIC_FOLDER = "../songs/"
 TUNES = glob.glob(MUSIC_FOLDER+"*.mp4") +   glob.glob(MUSIC_FOLDER+"*.mp3") +  glob.glob(MUSIC_FOLDER+"*.m4a")
 if len(TUNES) == 0:
     print("No Tunes in your JukeBox!")
@@ -41,7 +49,7 @@ else:
 for tune in TUNES :
     name = noPath( tune )
     noExt = noExtension( name )
-    print( "<a href=\"./index.py/?song=songs/" + name +"\">" + noExt +"</a")
+    print( "<a href=\"/htbin/index.py/?song=songs/" + name +"\">" + noExt +"</a")
     print( "<h1><font color=\"06dbo6\">" + name + "</font></h1>" )
     print(" <video width=\"240\" height=\"200\" controls>" )
     print("<source src=\"" + tune + "\" type=\"video/mp4\">" )
