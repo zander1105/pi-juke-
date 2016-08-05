@@ -9,16 +9,10 @@ import random
 import sys
 
 print('Content-type: text/html')
-print('''<html>
-<head>
-<style>
-body {
-    background-image: url("beach.jpg");
-}
-</style>
-</head>
-</html>
+print('''
 ''')
+#print "<link type=\"text/css\" rel=\"stylesheet\" href=\"style.css\">"
+
 def noExtension( filename ):
     return os.path.splitext( filename )[0]
 
@@ -38,14 +32,14 @@ arguments = cgi.FieldStorage()
 if "song" in arguments:
     postQueueToJukebox( arguments['song'])
 MUSIC_FOLDER = "../songs/"
-TUNES = glob.glob(MUSIC_FOLDER+"*.mp4") +   glob.glob(MUSIC_FOLDER+"*.mp3") +  glob.glob(MUSIC_FOLDER+"*.m4a")
+TUNES = glob.glob(MUSIC_FOLDER+"*.mp3") +  glob.glob(MUSIC_FOLDER+"*.m4a")
 if len(TUNES) == 0:
     print("No Tunes in your JukeBox!")
     print("Exiting....")
     sys.exit(1)
 else:
     print (str(len(TUNES)) + " songs found in your JukeBox")
-
+    print ("<link type=\"text/css\" rel=\"stylesheet\" href=\"style.css\">")
 for tune in TUNES :
     name = noPath( tune )
     noExt = noExtension( name )
